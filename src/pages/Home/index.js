@@ -1,25 +1,51 @@
 import React from "react";
-import { Paper } from "@mui/material";
+import { Paper, styled, Card } from "@mui/material";
+import theme from "../../components/theme";
 import styles from "./styles";
-
+import Section1 from "./section1";
+import Section5 from "./section5";
 export default function Home() {
-    const textValues=['Codifique','Desenhe','Programe', 'Implemente']
+  const GradientText = styled("span")({
+    fontSize: "56px",
+    fontWeight: "bold",
+    fontFamily: "Open Sans",
+    background:
+      "linear-gradient(90.33deg, rgb(166, 75, 214) 0.1%, rgb(227, 18, 96) 55.24%)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+  });
   return (
     <div style={styles.body}>
-      <Paper
-        sx={styles.section1}
-      >
-        <div style={{height:'100%', color:'#fafafa', padding:10}}>
-        <p style={styles.text}>{textValues}</p>
-        <p>o seu futuro global agora!</p>
-        <p>
-          Domine as tecnologias utilizadas pelas empresas mais inovadoras do
-          mundo e encare seu novo desafio profissional, evoluindo em comunidade
-          com os melhores experts.
-        </p>
-        {/* <img src={bg1} /> */}
-        </div>
+      <Section1 />
+      <Paper sx={styles.section2}>
+        <Card
+          sx={{
+            bgcolor: "transparent",
+            height: "90%",
+            color: "#fafafa",
+            p: "1rem",
+            boxShadow:'none',
+            [theme.breakpoints.up("xl")]: {
+              minWidth: "1180px",
+            },
+            [theme.breakpoints.down("xl")]: {
+              minWidth: "700px",
+              maxWidth: "1180px",
+              width: "100%",
+            },
+            [theme.breakpoints.down("md")]: {
+              minWidth: 0,
+              maxWidth: "769px",
+              width: "100%",
+            },
+          }}
+        >
+          <div>
+          <GradientText style={{fontSize:'3rem'}}>carreiras</GradientText>
+          </div>
+        </Card>
       </Paper>
+      <Section5 />
     </div>
   );
 }

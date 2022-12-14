@@ -18,7 +18,7 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
 import { Outlet } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
-import {withStyles} from "@mui/material";
+import theme from "../theme";
 import { ReactComponent as Logo } from "../../assets/logo-dio.svg";
 import { ReactComponent as IconPortuguese } from "../../assets/ic-br.svg";
 import { ReactComponent as IconSpanish } from "../../assets/ic-en.svg";
@@ -49,9 +49,6 @@ HideOnScroll.propTypes = {
 
 // const drawerWidth = 240;
 const navItems = ["Home", "Catálogo", "Planos", "Para Empresas"];
-const fixToolbar = (theme) => ({
-  toolbar: theme.mixins.toolbar,
-});
 
 function DrawerAppBar(props) {
   const { window } = props;
@@ -157,9 +154,9 @@ function DrawerAppBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box theme={theme} sx={{ display: "flex" }}>
       <HideOnScroll {...props}>
-        <AppBar position='fixed' component="nav" style={styles.appbar}>
+        <AppBar position="fixed" component="nav" style={styles.appbar}>
           <Toolbar
             style={{
               padding: "0 12px 0 12px",
@@ -176,11 +173,24 @@ function DrawerAppBar(props) {
               aria-label="open drawer"
               edge="end"
               onClick={handleDrawerToggle}
-              sx={{ display: { sx: "none", md: "none" } }}
+              sx={{
+                [theme.breakpoints.up("lg")]: {
+                  display: "none",
+                },
+              }}
             >
               <MenuIcon />
             </IconButton>
-            <Box sx={{ display: { xs: "none", md: "flex", sx: "block" } }}>
+            <Box
+              sx={{
+                [theme.breakpoints.down("lg")]: {
+                  display: "none",
+                },
+                [theme.breakpoints.up("lg")]: {
+                  display: "flex",
+                },
+              }}
+            >
               {navItems.map((item) => (
                 <Button key={item} sx={styles.button}>
                   {item}
