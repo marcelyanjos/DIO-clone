@@ -1,12 +1,16 @@
-# Found
+# DIO CLONE
 
-# Fix
-grid from Home section 5
+Replicar a pagina da Dio, utilizando os conceitos ensinados durante as aulas
 
-# Do
-[ ]SignIn
-[ ]SignOut
-[ ]User Home
+---
 
-# Maybe
-Translate
+## Stoped
+[]Home
+
+## Doing
+[]Userpage
+
+# Done
+[x]SignIn
+[x]SignOut
+
